@@ -21,4 +21,8 @@
 	margin: 0px;
 }
 
+.tile:focus {
+	outline: 0;
+}
+
 

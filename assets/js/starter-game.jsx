@@ -113,7 +113,7 @@ class Starter extends React.Component {
   //       </div> 
   //     </div>
   //   );
-  }
+  // }
 }
 
 // class Board extends React.Component {

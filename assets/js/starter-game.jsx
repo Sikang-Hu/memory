@@ -77,7 +77,10 @@ class Starter extends React.Component {
     if (comp.includes(t[i])) {
       return;
     }
-    clk.push(i);
+    let st1 = _.extend(this.state, {
+      clicked: clk.concat(i),
+    });
+    this.setState(st1);
   }
 
 

@@ -83,17 +83,16 @@ class Starter extends React.Component {
       <div>
         <div className="row">
           <div className="column">
-            <h1>{["Memory Game &#129409"]}</h1>
+            <h1>{["Memory Game"]}</h1>
           </div>
         </div>
-        {/*<div className="row">
+        <div className="row">
           <div className="column column-50 column-offset-25">
             <Board root={this} 
-
+            cb={this.currentBoard()};
             onClick={(i) => this.handler(i)}/>
           </div>
         </div> 
-      */}
         <div className="row">
           <div className="column">
             <Score root={this} />
@@ -129,7 +128,7 @@ class Board extends React.Component {
   }
 
   render () {
-    let cur = this.props.root.currentBoard();
+    let cur = this.props.cb;
     let r = [];
     for (var i = 0; i < 4; i++) {
       r.push(this.renderRow(i, 4, cur));

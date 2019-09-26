@@ -36,6 +36,7 @@ class Starter extends React.Component {
 
   restart() {
     let init = _.extend(this.state, {
+      tiles: random_list(),
       clicked: [],
       hint: -1
     });

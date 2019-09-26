@@ -83,7 +83,7 @@ class Starter extends React.Component {
       <div>
         <div className="row">
           <div className="column">
-            <h1>Memory Game &#129409</h1>
+            <h1>{["Memory Game &#129409"]}</h1>
           </div>
         </div>
         {/*<div className="row">

@@ -117,7 +117,6 @@ class Board extends React.Component {
   }
 
   renderRow(board, row, columns) {
-    console.log(board);
     let tiles = [];
     for (let i = 0; i < columns; i++) {
       tiles.push(this.renderTile(board, i + 4 * row));

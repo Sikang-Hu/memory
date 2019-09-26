@@ -85,14 +85,14 @@ class Starter extends React.Component {
     }
     let h = -1;
     if (clk.length % 2 != 0) {
-      hint = i;
+      h = i;
     }
     let st1 = _.extend(this.state, {
       clicked: clk.concat(i),
       hint: h
     });
     this.setState(st1);
-    setTimeOut(() => {
+    setTimeout(() => {
       this.setState(_.extend(this.state, {
         hint: -1
       }));

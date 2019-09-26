@@ -118,7 +118,6 @@ class Board extends React.Component {
 
   renderRow(borad, row, columns) {
     let tiles = [];
-    console.log(row);
     for (let i = 0; i < columns; i++) {
       tiles.push(this.renderTile(board, i + 4 * row));
     }
@@ -131,6 +130,8 @@ class Board extends React.Component {
 
   render () {
     let cur = this.props.cb;
+    console.log(this.props);
+    console.log(cur);
     let r = [];
     for (let i = 0; i < 4; i++) {
       r.push(this.renderRow(cur, i, 4));

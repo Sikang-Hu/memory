@@ -29,13 +29,15 @@ class Starter extends React.Component {
     super(props);
     this.state = {
       tiles: this.props.str,
-      clicked: []
+      clicked: [],
+      hint: -1
     };
   }
 
   restart() {
     let init = _.extend(this.state, {
       clicked: [],
+      hint: -1
     });
     this.setState(init);
   }
@@ -64,7 +66,10 @@ class Starter extends React.Component {
     });
     if (clk.length % 2 != 0) {
       result[clk[clk.length - 1]] = this.state.tiles[clk[clk.length - 1]];
-    }
+    } else if (this.state.hint != -1) {
+      result[this.state.hint] = this.state.tiles[this.state.hint];
+      result[clk[clk.length - 2]] = this.state.tiles[clk[clk.length - 1]];
+    } 
     return result;
   }
 
@@ -78,10 +83,20 @@ class Starter extends React.Component {
     if (clk.length % 2 != 0 && clk[clk.length - 1] == i) {
       return;
     }
+    let h = -1;
+    if (clk.length % 2 != 0) {
+      hint = i;
+    }
     let st1 = _.extend(this.state, {
       clicked: clk.concat(i),
+      hint: h
     });
     this.setState(st1);
+    setTimeOut(() => {
+      this.setState(_.extend(this.state, {
+        hint: -1
+      }));
+    }, 1000);
   }
 
 

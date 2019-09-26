@@ -72,7 +72,7 @@ class Starter extends React.Component {
     let clk = this.state.clicked;
     let t = this.state.tiles;
     let comp = this.completed();
-    if (comp.includes(t[i]])) {
+    if (comp.includes(t[i])) {
       return;
     }
     if (clk.length % 2 != 0 && clk[clk.length - 1] == i) {

@@ -69,7 +69,7 @@ class Starter extends React.Component {
   }
 
   handler(i) {
-    console.log(i);
+    console.log(this.state);
     let clk = this.state.clicked;
     let t = this.state.tiles;
     let comp = this.completed();

@@ -69,6 +69,7 @@ class Starter extends React.Component {
   }
 
   handler(i) {
+    console.log(i);
     let clk = this.state.clicked;
     let t = this.state.tiles;
     let comp = this.completed();
@@ -130,7 +131,6 @@ class Board extends React.Component {
 
   render () {
     let cur = this.props.cb;
-    console.log(this.props);
     let r = [];
     for (let i = 0; i < 4; i++) {
       r.push(this.renderRow(cur, i, 4));

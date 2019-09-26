@@ -62,7 +62,7 @@ class Starter extends React.Component {
       return comp.includes(t) ? t : " ";
     });
     if (clk.length % 2 != 0) {
-      result[clk.length - 1] = this.tiles[clk.length - 1];
+      result[clk.length - 1] = this.state.tiles[clk.length - 1];
     }
     return result;
   }

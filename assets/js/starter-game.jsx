@@ -11,7 +11,8 @@ export default function game_init(root) {
 function random_list() {
   let arr = Array.from("ABCDEFGH");
   arr = arr.concat(arr);
-  return shuffle(arr);
+  shuffle(arr);
+  return arr;
 }
 
 function shuffle(arr) {

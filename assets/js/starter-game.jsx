@@ -57,9 +57,9 @@ class Starter extends React.Component {
   }
 
   currentBoard() {
-    console.log(this.state);
     let clk = this.state.clicked;
     let comp = this.completed();
+    console.log(comp);
     let result = this.state.tiles.map((t) => {
       return comp.includes(t) ? t : " ";
     });

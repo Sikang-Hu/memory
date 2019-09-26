@@ -28,7 +28,7 @@ class Starter extends React.Component {
     super(props);
     this.state = {
       tiles: this.props.str,
-      clicked: [],
+      clicked: []
     };
   }
 
@@ -118,7 +118,9 @@ class Board extends React.Component {
 
   renderRow(borad, row, columns) {
     let tiles = [];
-    for (var i = 0; i < columns; i++) {
+    console.log(row);
+    for (let i = 0; i < columns; i++) {
+
       rows.push(this.renderTile(board, i + 4 * row));
     }
     return (
@@ -131,7 +133,7 @@ class Board extends React.Component {
   render () {
     let cur = this.props.cb;
     let r = [];
-    for (var i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
       r.push(this.renderRow(i, 4, cur));
     }
     return (

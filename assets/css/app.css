@@ -16,6 +16,9 @@
 	float: left;
 	font-weight: bold;
 	text-align: center;
-	width: 33.3%
+	width: 25%;
+	border: 1px solid gray;
+	margin: 0px;
 }
+
 

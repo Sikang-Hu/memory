@@ -58,9 +58,10 @@ class Starter extends React.Component {
   currentBoard() {
     let clk = this.state.clicked;
     let comp = this.completed();
-    let result = this.state.tiles.map((t) => {
-      return comp.includes(t) ? t : " ";
-    });
+    // let result = this.state.tiles.map((t) => {
+    //   return comp.includes(t) ? t : " ";
+    // });
+    let result = Array.from("ABCDEFGHABCDEFGH");
     if (clk.length % 2 != 0) {
       result[clk.length - 1] = this.state.tiles[clk.length - 1];
     }

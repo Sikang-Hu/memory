@@ -22,8 +22,9 @@
 }
 
 .tile:focus {
-	background-color: yellow;
-	outline: 0;
+	outline: none;
 }
+
+.tile::-moz-focus-inner {border:0;}
 
 

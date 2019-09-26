@@ -68,7 +68,7 @@ class Starter extends React.Component {
       result[clk[clk.length - 1]] = this.state.tiles[clk[clk.length - 1]];
     } else if (this.state.hint != -1) {
       result[this.state.hint] = this.state.tiles[this.state.hint];
-      result[clk[clk.length - 2]] = this.state.tiles[clk[clk.length - 1]];
+      result[clk[clk.length - 2]] = this.state.tiles[clk[clk.length - 2]];
     } 
     return result;
   }

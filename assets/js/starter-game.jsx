@@ -120,7 +120,6 @@ class Board extends React.Component {
     let tiles = [];
     console.log(row);
     for (let i = 0; i < columns; i++) {
-
       rows.push(this.renderTile(board, i + 4 * row));
     }
     return (
@@ -134,7 +133,7 @@ class Board extends React.Component {
     let cur = this.props.cb;
     let r = [];
     for (let i = 0; i < 4; i++) {
-      r.push(this.renderRow(i, 4, cur));
+      r.push(this.renderRow(cur, i, 4));
     }
     return (
       <div className="board">

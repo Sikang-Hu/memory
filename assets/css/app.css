@@ -17,11 +17,12 @@
 	font-weight: bold;
 	text-align: center;
 	width: 25%;
-	border: 1px solid gray;
+	border: 1px solid white;
 	margin: 0px;
 }
 
 .tile:focus {
+	background-color: yellow;
 	outline: 0;
 }
 

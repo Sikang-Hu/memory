@@ -120,7 +120,7 @@ class Board extends React.Component {
     let tiles = [];
     console.log(row);
     for (let i = 0; i < columns; i++) {
-      rows.push(this.renderTile(board, i + 4 * row));
+      tiles.push(this.renderTile(board, i + 4 * row));
     }
     return (
       <div className="row" key={"row-" + row}>

@@ -78,6 +78,7 @@ class Starter extends React.Component {
   }
 
   render() {
+    return(
     <div>
       <div className="row">
         <div className="column">
@@ -88,6 +89,7 @@ class Starter extends React.Component {
         </div>
       </div> 
     </div>
+    );
   }
 
   // render() {

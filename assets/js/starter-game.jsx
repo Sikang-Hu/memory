@@ -77,89 +77,78 @@ class Starter extends React.Component {
     clk.push(i);
   }
 
+
   render() {
-    return(
-    <div>
-      <div className="row">
-        <div className="column">
-          <Score root={this} />
+    return (
+      <div>
+        <div className="row">
+          <div className="column">
+            <h1>Memory Game &#129409</h1>
+          </div>
         </div>
-        <div className="column">
-          <p><button onClick={this.restart.bind(this)}>Restart</button></p>
-        </div>
-      </div> 
-    </div>
+        {/*<div className="row">
+          <div className="column column-50 column-offset-25">
+            <Board root={this} 
+
+            onClick={(i) => this.handler(i)}/>
+          </div>
+        </div> 
+      */}
+        <div className="row">
+          <div className="column">
+            <Score root={this} />
+          </div>
+          <div className="column">
+            <p><button onClick={this.restart.bind(this)}>Restart</button></p>
+          </div>
+        </div> 
+      </div>
     );
   }
-
-  // render() {
-  //   return (
-  //     <div>
-  //       <div className="row">
-  //         <div className="column">
-  //           <h1>Memory Game &#129409</h1>
-  //         </div>
-  //       </div>
-  //       <div className="row">
-  //         <div className="column column-50 column-offset-25">
-  //           <Board root={this} onClick={(i) => this.handler(i)}/>
-  //         </div>
-  //       </div> 
-  //       <div className="row">
-  //         <div className="column">
-  //           <Score root={this} />
-  //         </div>
-  //         <div className="column">
-  //           <p><button onClick={this.restart.bind(this)}>Restart</button></p>
-  //         </div>
-  //       </div> 
-  //     </div>
-  //   );
-  // }
 }
 
-// class Board extends React.Component {
-//   renderTile(board, i){
-//     return (<Tile 
-//             key={i}
-//             value={board[i]} 
-//             onClick={() => this.props.onClick(i)}
-//           />);
-//   }
+class Board extends React.Component {
+  renderTile(board, i){
+    return (<Tile 
+            key={i}
+            value={board[i]} 
+            onClick={() => this.props.onClick(i)}
+          />);
+  }
 
-//   renderRow(borad, row, columns) {
-//     let tiles = [];
-//     for (var i = 0; i < columns; i++) {
-//       rows.push(this.renderTile(board, i + 4 * row));
-//     }
-//     return (
-//       <div className="row" key={"row-" + row}>
-//         {tiles}
-//       </div>
-//       );
-//   }
+  renderRow(borad, row, columns) {
+    let tiles = [];
+    for (var i = 0; i < columns; i++) {
+      rows.push(this.renderTile(board, i + 4 * row));
+    }
+    return (
+      <div className="row" key={"row-" + row}>
+        {tiles}
+      </div>
+      );
+  }
 
-//   render () {
-//     let cur = this.props.root.currentBoard();
-//     let r = [];
-//     for (var i = 0; i < 4; i++) {
-//       r.push(this.renderRow(i, 4, cur));
-//     }
-//     return (
-//       <div className="board">
-//         {r}
-//       </div>
-//       );
-//   }
-// }
+  render () {
+    let cur = this.props.root.currentBoard();
+    let r = [];
+    for (var i = 0; i < 4; i++) {
+      r.push(this.renderRow(i, 4, cur));
+    }
+    return (
+      <div className="board">
+        {r}
+      </div>
+      );
+  }
+}
 
-// function Tile(params) {
-//   return (
-//     <button className="tile" onClick={params.onClick}>
-//       {params.value}
-//     </button>
-//     );
-// }
+function Tile(params) {
+  return (
+    <button className="tile" onClick={params.onClick}>
+      {params.value}
+    </button>
+    );
+}
 
 function Score(params) {
   return (<div>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import _ from 'lodash';
 
 export default function game_init(root) {
-  ReactDOM.render(<Starter />, root);
+  ReactDOM.render(<Starter str={random_list()}/>, root);
 }
 
 
@@ -27,7 +27,7 @@ class Starter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tiles: random_list(),
+      tiles: this.props.str,
       clicked: [],
     };
   }

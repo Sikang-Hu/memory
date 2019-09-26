@@ -59,22 +59,23 @@ class Starter extends React.Component {
   currentBoard() {
     let clk = this.state.clicked;
     let comp = this.completed();
-    console.log(comp);
     let result = this.state.tiles.map((t) => {
       return comp.includes(t) ? t : " ";
     });
     if (clk.length % 2 != 0) {
-      result[clk.length - 1] = this.state.tiles[clk.length - 1];
+      result[clk[clk.length - 1]] = this.state.tiles[clk[clk.length - 1]];
     }
     return result;
   }
 
   handler(i) {
-    console.log(this.state);
     let clk = this.state.clicked;
     let t = this.state.tiles;
     let comp = this.completed();
-    if (comp.includes(t[i])) {
+    if (comp.includes(t[i])]) {
+      return;
+    }
+    if (clk.length % 2 != 0 && clk[clk.length - 1] == i) {
       return;
     }
     let st1 = _.extend(this.state, {

@@ -79,24 +79,26 @@ class Starter extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="column">
-          <h1>Memory Game &#129409</h1>
+      <div>
+        <div className="row">
+          <div className="column">
+            <h1>Memory Game &#129409</h1>
+          </div>
         </div>
+        <div className="row">
+          <div className="column column-50 column-offset-25">
+            <Board root={this} onClick={(i) => this.handler(i)}/>
+          </div>
+        </div> 
+        <div className="row">
+          <div className="column">
+            <Score root={this} />
+          </div>
+          <div className="column">
+            <p><button onClick={this.restart.bind(this)}>Restart</button></p>
+          </div>
+        </div> 
       </div>
-      <div className="row">
-        <div className="column column-50 column-offset-25">
-          <Board root={this} onClick={(i) => this.handler(i)}/>
-        </div>
-      </div> 
-      <div className="row">
-        <div className="column">
-          <Score root={this} />
-        </div>
-        <div className="column">
-          <p><button onClick={this.restart.bind(this)}>Restart</button></p>
-        </div>
-      </div> 
     );
   }
 }

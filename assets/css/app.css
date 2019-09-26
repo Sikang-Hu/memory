@@ -7,3 +7,17 @@
     text-align: center;
 }
 
+.board {
+	padding: 10ex;
+	align-content: center;
+}
+
+.tile {
+	background-color: white;
+	float: left;
+	font-weight: bold;
+	text-align: center;
+	height: 33.3%;
+	width: 33.3%
+}
+

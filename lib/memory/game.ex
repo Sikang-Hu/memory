@@ -37,9 +37,10 @@ defmodule Memory.Game do
 							|> Map.put(:times, game.times + 1)
 						know != w ->
 							# Settime out to hide
+							game = game
+							|> Map.put(:times, game.times + 1)
 							ng = game
 							|> Map.put(:guesses, game.guesses ++ [clk])
-							|> Map.put(:times, game.times + 1)
 							[ng, game]
 					end
 				_ -> game

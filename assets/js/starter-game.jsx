@@ -11,7 +11,7 @@ class Starter extends React.Component {
     super(props);
     this.channel = props.channel
     this.state = {
-      current: [],
+      skel: [],
       clicks: 0,
     };
 

@@ -54,7 +54,7 @@ class Starter extends React.Component {
         <div className="row">
           <div className="column column-50 column-offset-25">
             <Board root={this} 
-            cb={this.state.current}
+            cb={this.state.skel}
             onClick={(i) => this.handler(i)}/>
           </div>
         </div> 

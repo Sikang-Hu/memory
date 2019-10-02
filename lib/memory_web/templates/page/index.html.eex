@@ -2,7 +2,7 @@
 	<div class="column">
 		<h1 id="index">Memory game</h1>
 		<%= form_for @conn, "/game", fn f -> %>
-			<p>Enter a room name: <%= text_input f :game, placeholder: "demo" %></p>
+			<p>Enter a room name: <%= text_input f, :game, placeholder: "demo" %></p>
 			<p><%= submit "Start!"%></p>
 		<% end %>
 	</div>

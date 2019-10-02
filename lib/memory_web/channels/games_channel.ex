@@ -36,6 +36,7 @@ defmodule MemoryWeb.GamesChannel do
 	def handle_info({:refresh, game}, socket) do
 		socket = assign(socket, :game, game);
 		push(socket, "refresh", %{"game" => Game.client_view(game)})
+		{:noreply, socket}
 	end
 
 	defp authorized?(_payload) do

@@ -49,10 +49,6 @@ defmodule Memory.Game do
 		end
 	end
 
-	def handle_info({:ping, game}) do
-		
-	end
-
 	def skeleton(l, comp, guesses) do
 		l
 		|> Enum.map(fn cc -> 

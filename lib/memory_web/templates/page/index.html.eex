@@ -1,6 +1,9 @@
 <div class="row">
 	<div class="column">
-		<h1 id="index">Join a Game</h1>
-		<p><a href="/game/demo">Join "demo"</a></p>
+		<h1 id="index">Memory game/h1>
+		<%= form_for @conn, "/game", fn f -> %>
+			<p>Enter a room name: <%= text_input f :game, placeholder: "demo" %></p>
+			<p><%= submit "Start!"%></p>
+		<% end %>
 	</div>
 </div>

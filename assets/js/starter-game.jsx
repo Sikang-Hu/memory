@@ -47,11 +47,6 @@ class Starter extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="column">
-            <h1>{["Memory Game"]}</h1>
-          </div>
-        </div>
-        <div className="row">
           <div className="column column-50 column-offset-25">
             <Board root={this} 
             cb={this.state.skel}

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export MIX_ENV=prod
-export PORT=4791
+export PORT=4792
 
 echo "Starting app..."
 
@@ -9,7 +9,7 @@ echo "Starting app..."
 #_build/prod/rel/memory/bin/memory start
 
 # Foreground for testing and for systemd
-_build/prod/rel/memory/bin/memory start
+_build/prod/rel/memory2/bin/memory2 start
 
 # TODO: Add a systemd service file
 #       to start your app on system boot.

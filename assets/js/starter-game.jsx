@@ -2,102 +2,44 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 
-export default function game_init(root) {
-  ReactDOM.render(<Starter str={random_list()}/>, root);
-}
-
-
-
-function random_list() {
-  let arr = Array.from("ABCDEFGH");
-  arr = arr.concat(arr);
-  shuffle(arr);
-  return arr;
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let x = arr[i];
-    arr[i] = arr[j];
-    arr[j] = x;
-  }
+export default function game_init(root, channel) {
+  ReactDOM.render(<Starter channel={channel}/>, root);
 }
 
 class Starter extends React.Component {
   constructor(props) {
     super(props);
+    this.channel = props.channel
     this.state = {
-      tiles: this.props.str,
-      clicked: [],
-      hint: -1
+      current: [],
+      clicks: 0,
     };
+
+    this.channel
+    .join()
+    .receive("ok", this.get_view.bind(this))
+    .receive("error", resp => {console.log("Cannot join!", resp)});
+
+    this.channel.on("refresh", this.get_view.bind(this));
+  }
+
+  get_view(view) {
+    console.log(view);
+    this.setState(view.game);
   }
 
   restart() {
-    let init = _.extend(this.state, {
-      tiles: random_list(),
-      clicked: [],
-      hint: -1
-    });
-    this.setState(init);
+    this.channel.push("restart", {})
+      .receive("ok", this.get_view.bind(this));
   }
 
-  clicks() {
-    return this.state.clicked.length;
-  }
-
-  completed () {
-    let clk = this.state.clicked;
-    let last =  clk.length % 2 == 0 ? clk.length : clk.length - 1;
-    let result = [];
-    for (let i = 0; i < last; i += 2) {
-      if (this.state.tiles[clk[i]] == this.state.tiles[clk[i + 1]]) {
-        result.push(this.state.tiles[clk[i]]);
-      }
-    }
-    return result;
-  }
-
-  currentBoard() {
-    let clk = this.state.clicked;
-    let comp = this.completed();
-    let result = this.state.tiles.map((t) => {
-      return comp.includes(t) ? t : " ";
-    });
-    if (clk.length % 2 != 0) {
-      result[clk[clk.length - 1]] = this.state.tiles[clk[clk.length - 1]];
-    } else if (this.state.hint != -1) {
-      result[this.state.hint] = this.state.tiles[this.state.hint];
-      result[clk[clk.length - 2]] = this.state.tiles[clk[clk.length - 2]];
-    } 
-    return result;
+  get_clicks() {
+    return this.state.clicks;
   }
 
   handler(i) {
-    let clk = this.state.clicked;
-    let t = this.state.tiles;
-    let comp = this.completed();
-    if (comp.includes(t[i])) {
-      return;
-    }
-    if (clk.length % 2 != 0 && clk[clk.length - 1] == i) {
-      return;
-    }
-    let h = -1;
-    if (clk.length % 2 != 0) {
-      h = i;
-    }
-    let st1 = _.extend(this.state, {
-      clicked: clk.concat(i),
-      hint: h
-    });
-    this.setState(st1);
-    setTimeout(() => {
-      this.setState(_.extend(this.state, {
-        hint: -1
-      }));
-    }, 1000);
+    this.channel.push("guess", {click: i})
+      .receive("ok", this.get_view.bind(this));
   }
 
 
@@ -112,7 +54,7 @@ class Starter extends React.Component {
         <div className="row">
           <div className="column column-50 column-offset-25">
             <Board root={this} 
-            cb={this.currentBoard()}
+            cb={this.state.current}
             onClick={(i) => this.handler(i)}/>
           </div>
         </div> 
@@ -175,7 +117,7 @@ function Tile(params) {
 function Score(params) {
   return (<div>
     <p><strong>Clicks:</strong></p>
-    <p>{params.root.clicks()}</p>
+    <p>{params.root.get_clicks()}</p>
     </div>);
 }
 

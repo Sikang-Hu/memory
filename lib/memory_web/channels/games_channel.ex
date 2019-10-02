@@ -16,7 +16,7 @@ defmodule MemoryWeb.GamesChannel do
 	end
 
 	def handle_in("guess", %{"click" => clk}, socket) do
-		case Game.click(socket.assign[:game], clk) do
+		case Game.click(socket.assigns[:game], clk) do
 			[ng, game] -> 
 				socket = assign(socket, :game, ng);
 				Process.send_after(self(), {:refresh, game}, 1000)

@@ -33,6 +33,7 @@ defmodule MemoryWeb.GamesChannel do
 	end
 
 	def handle_in("restart", _payload, socket) do
+		name = socket.assigns[:name]
 		game = Game.new();
 		socket = assign(socket, :game, game)
 		BackupAgent.put(name, game)
